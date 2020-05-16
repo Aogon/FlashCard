@@ -14,10 +14,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val apple = Word(R.drawable.apple, "りんご")
-        val banana = Word(R.drawable.banana, "バナナ")
-        val orange = Word(R.drawable.orange, "オレンジ")
-        val strawberry = Word(R.drawable.strawberry, "いちご")
+        val apple = CustomWord(R.drawable.apple, "りんご", "apple")
+        val banana = CustomWord(R.drawable.banana, "バナナ", "banana")
+        val orange = CustomWord(R.drawable.orange, "オレンジ", "orange")
+        val strawberry = CustomWord(R.drawable.strawberry, "いちご", "strawberry")
+
 
         addWord(apple)
         addWord(banana)
@@ -27,23 +28,30 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun addWord(word: Word) {
-        val nameTextView = TextView(applicationContext)
+    private fun addWord(CustomWord: CustomWord) {
+        val nameTextView1 = TextView(applicationContext)
+        nameTextView1.text = CustomWord.japanese
 
-        nameTextView.text = word.name
+        val nameTextView2 = TextView(applicationContext)
+        nameTextView2.text = CustomWord.english
+
+
 //        container.addView(nameTextView)
 
         val layout = LinearLayout(this.applicationContext)
         layout.orientation = LinearLayout.HORIZONTAL
         val imageView = ImageView(this)
-        imageView.setImageResource(word.resId)
+        imageView.setImageResource(CustomWord.resId)
         imageView.adjustViewBounds = true
         imageView.maxHeight = 200
 
         layout.addView(imageView)
-        layout.addView(nameTextView)
+        layout.addView(nameTextView1)
+        layout.addView(nameTextView2)
         container.addView(layout)
     }
+
+
 
 
 
