@@ -13,12 +13,17 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val customWords = arrayOfNulls<CustomWord>(4)
 
-        customWords[0] = CustomWord(R.drawable.apple, "りんご", "apple")
-        customWords[1] = CustomWord(R.drawable.banana, "バナナ", "banana")
-        customWords[2] = CustomWord(R.drawable.orange, "オレンジ", "orange")
-        customWords[3] = CustomWord(R.drawable.strawberry, "いちご", "strawberry")
+
+        val customWords: Array<CustomWord> = arrayOf(CustomWord(R.drawable.apple, "りんご", "apple"),
+                                                CustomWord(R.drawable.banana, "バナナ", "banana"),
+                                                CustomWord(R.drawable.orange, "オレンジ", "orange"),
+                                                CustomWord(R.drawable.strawberry, "いちご", "strawberry"))
+
+//        customWords[0] = CustomWord(R.drawable.apple, "りんご", "apple")
+//        customWords[1] = CustomWord(R.drawable.banana, "バナナ", "banana")
+//        customWords[2] = CustomWord(R.drawable.orange, "オレンジ", "orange")
+//        customWords[3] = CustomWord(R.drawable.strawberry, "いちご", "strawberry")
 
         for (i in 0..3) {
             addWord(customWords[i])
@@ -27,12 +32,15 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun addWord(CustomWord: CustomWord?) {
+
+
+
+    private fun addWord(CustomWord: CustomWord) {
         val nameTextView1 = TextView(applicationContext)
-        nameTextView1.text = CustomWord?.japanese
+        nameTextView1.text = CustomWord.japanese
 
         val nameTextView2 = TextView(applicationContext)
-        nameTextView2.text = CustomWord?.english
+        nameTextView2.text = CustomWord.english
 
 
 //        container.addView(nameTextView)
@@ -40,7 +48,7 @@ class MainActivity : AppCompatActivity() {
         val layout = LinearLayout(this.applicationContext)
         layout.orientation = LinearLayout.HORIZONTAL
         val imageView = ImageView(this)
-        imageView.setImageResource(CustomWord?.resId!!)
+        imageView.setImageResource(CustomWord.resId)
         imageView.adjustViewBounds = true
         imageView.maxHeight = 200
 
